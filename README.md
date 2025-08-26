@@ -2,7 +2,7 @@
 
 ## 📖 Project Overview
 
-This project is a hands-on lab conducted on a **physically isolated home network** (no internet connection). The goal was to configure core networking concepts—**DHCP Reservation** and **Port Forwarding**—to successfully host and access a simple HTTP server from a client device within the network.
+This project is a hands-on lab which demonstrates core networking concepts- **DHCP Reservation** and **Port Forwarding** conducted on a **physically isolated home network**. The goal was to successfully host and access a simple HTTP server from a client device within the network. The entire lab was performed on a network segment with no connection to the internet.
 
 ## 🎯 Learning Objectives
 
@@ -15,33 +15,33 @@ This project is a hands-on lab conducted on a **physically isolated home network
 
 ## 🛠️ Technologies & Hardware Used
 
-- **Router:** Airtel 4G Smartbox
+- **Router:** Huawei EchoLife HS8545M5 
 - **Server:** Windows 10 Pro PC
 - **Client:** iPhone XR
 - **Software:** Python 3 (`http.server`), Command Prompt
 
 ## 🔧 Methodology & Steps
 
-### 1. Lab Setup
-- Disconnected the router's WAN/Internet cable to create a closed, safe lab environment.
-- Connected the server (Windows 10 PC) to the router via Wi-Fi.
-- Connected a client device (iPhone XR) to the router's Wi-Fi.
+### Step 1: Network Isolation and Access
+1. Physically disconnected the WAN/Internet cable from the Huawei router.
+2. Connected the Windows 10 Pro PC to the router via Ethernet for stability.
+3. Accessed the router's administration panel at `http://192.168.100.1`.
 
-### 2. DHCP Reservation
-- Accessed the Airtel router's admin panel at `http://192.168.0.1`.
-- Located the DHCP Client List (often under "Connected Devices" or "LAN Settings") to find the server's MAC address and current dynamic IP.
-- Created a DHCP Reservation rule, binding the server's MAC address to a static IP: `192.168.0.50`.
-- Renewed the DHCP lease on the server (`ipconfig /release` followed by `ipconfig /renew`) and verified the new static IP was assigned using `ipconfig`.
+### Step 2: DHCP IP Reservation
+The goal was to assign a permanent IP address to the server PC to ensure reliable port forwarding.
+1. Located the PC's MAC address via `ipconfig /all` in Command Prompt.
+2. Navigated to the **DHCP -> Static IP Configuration** section on the Huawei router.
+3. Created a new binding for the server's MAC address to the static IP `192.168.100.50`.
 
-### 3. Port Forwarding
-- Navigated to the **Port Forwarding** or **NAT** section in the Airtel router admin panel.
+### 3. Port Forwarding Rule
+- Navigated to the **Forward Rules -> Port Mapping Configuration**  section in the Huawei router admin panel.
 - Created a new rule:
   - **External Port:** `8080`
-  - **Internal IP Address:** `192.168.0.50`
+  - **Internal IP Address:** `192.168.100.50`
   - **Internal Port:** `80`
   - **Protocol:** `TCP`
 
-### 4. HTTP Server Setup
+### 4. HTTP Server Setup and Testing
 - On the server machine (Windows PC), created a project directory and a simple `index.html` file.
 - Opened Command Prompt as Administrator (required to use port 80 on Windows).
 - Navigated to the directory and launched the HTTP server:
