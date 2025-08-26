@@ -36,7 +36,7 @@ The goal was to assign a permanent IP address to the server PC to ensure reliabl
 ### 3. Port Forwarding Rule
 - Navigated to the **Forward Rules -> Port Mapping Configuration**  section in the Huawei router admin panel.
 - Created a new rule:
-  - **External Port:** `8080`
+  - **External Port:** `8000`
   - **Internal IP Address:** `192.168.100.50`
   - **Internal Port:** `80`
   - **Protocol:** `TCP`
@@ -46,4 +46,4 @@ The goal was to assign a permanent IP address to the server PC to ensure reliabl
 - Opened Command Prompt as Administrator (required to use port 80 on Windows).
 - Navigated to the directory and launched the HTTP server:
   ```bash
-  python -m http.server 80
+  python -m http.server 8000
