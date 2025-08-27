@@ -47,3 +47,6 @@ The goal was to assign a permanent IP address to the server PC to ensure reliabl
 - Navigated to the directory and launched the HTTP server:
   ```bash
   python -m http.server 8000
+  
+- Internal test: Access http://192.168.1.100:8000 from local network
+- External test: Access http://your-public-ip:8000 from external network
